@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRATHEEK N — Game Developer | Jackpot Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Bungee&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --felt:#0a0612;
+  --felt-2:#140a24;
+  --neon-pink:#ff2bd6;
+  --neon-cyan:#00f0ff;
+  --gold:#ffd24a;
+  --gold-deep:#c98c00;
+  --hot-red:#ff3b3b;
+  --white:#fdf8ff;
+  --dim:#9d8fb8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--felt);
+  color:var(--white);
+  font-family:'Space Grotesk',sans-serif;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255,43,214,.18), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 30%, rgba(0,240,255,.08), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 10% 70%, rgba(255,210,74,.06), transparent 60%);
+}
+::selection{background:var(--neon-pink);color:var(--felt)}
+
+/* ---------- TICKER ---------- */
+.ticker{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--gold);
+  color:#1a0e00;
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;font-size:.72rem;letter-spacing:.12em;
+  overflow:hidden;white-space:nowrap;
+  border-bottom:3px solid #1a0e00;
+  padding:6px 0;
+}
+.ticker-inner{display:inline-block;animation:ticker 28s linear infinite}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker span{margin:0 28px}
+
+/* ---------- MARQUEE BULB FRAME ---------- */
+.bulbs{
+  display:flex;justify-content:space-around;
+  padding:10px 6px;
+}
+.bulbs i{
+  width:10px;height:10px;border-radius:50%;
+  background:#5a4500;
+  box-shadow:0 0 4px rgba(255,210,74,.2);
+  animation:bulb 1.2s steps(2) infinite;
+}
+.bulbs i:nth-child(odd){animation-delay:.6s}
+@keyframes bulb{
+  0%,49%{background:var(--gold);box-shadow:0 0 10px var(--gold),0 0 22px rgba(255,210,74,.7)}
+  50%,100%{background:#5a4500;box-shadow:none}
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:90px 20px 60px;
+  position:relative;
+}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--neon-cyan);
+  letter-spacing:.4em;font-size:.78rem;
+  text-transform:uppercase;
+  margin-bottom:18px;
+  text-shadow:0 0 12px var(--neon-cyan);
+}
+.neon-name{
+  font-family:'Monoton',cursive;
+  font-size:clamp(2.6rem,9vw,7.5rem);
+  line-height:1.05;
+  color:var(--neon-pink);
+  text-shadow:
+    0 0 6px #fff,
+    0 0 14px var(--neon-pink),
+    0 0 40px var(--neon-pink),
+    0 0 90px rgba(255,43,214,.6);
+  animation:flicker 5s infinite;
+}
+@keyframes flicker{
+  0%,93%,95%,97%,100%{opacity:1}
+  94%,96%{opacity:.35;text-shadow:none}
+}
+.hero-sub{
+  font-family:'Bungee',cursive;
+  font-size:clamp(.95rem,2.6vw,1.6rem);
+  color:var(--gold);
+  margin-top:14px;
+  letter-spacing:.08em;
+  text-shadow:0 0 16px rgba(255,210,74,.8);
+}
+.hero-tag{
+  margin-top:18px;color:var(--dim);max-width:560px;line-height:1.6;font-size:1rem;
+}
+.hero-tag b{color:var(--neon-cyan)}
+
+/* ---------- SLOT MACHINE ---------- */
+.slot{
+  margin-top:46px;
+  background:linear-gradient(180deg,#2a1145,#160a2c 60%,#0d0520);
+  border:4px solid var(--gold);
+  border-radius:26px;
+  padding:0 0 26px;
+  width:min(620px,94vw);
+  box-shadow:
+    0 0 0 4px #1a0e00,
+    0 0 50px rgba(255,210,74,.25),
+    0 30px 70px rgba(0,0,0,.7),
+    inset 0 2px 0 rgba(255,255,255,.15);
+  position:relative;
+}
+.slot-header{
+  font-family:'Bungee',cursive;
+  background:linear-gradient(180deg,var(--hot-red),#a30000);
+  border-radius:20px 20px 0 0;
+  padding:14px 10px 10px;
+  font-size:clamp(.9rem,3vw,1.35rem);
+  color:var(--gold);
+  text-shadow:2px 2px 0 #5c0000;
+  letter-spacing:.06em;
+  border-bottom:4px solid #1a0e00;
+}
+.reels{
+  display:flex;gap:14px;justify-content:center;
+  padding:26px 22px 10px;
+}
+.reel{
+  background:linear-gradient(180deg,#fff 0%,#e8e0ff 100%);
+  border:3px solid #1a0e00;
+  border-radius:12px;
+  width:31%;
+  height:130px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:inset 0 10px 16px rgba(0,0,0,.35),inset 0 -10px 16px rgba(0,0,0,.35);
+}
+.reel-strip{
+  display:flex;flex-direction:column;
+  transition:transform 2.2s cubic-bezier(.15,.9,.3,1.04);
+}
+.reel-cell{
+  height:130px;flex:0 0 130px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#1a0e2e;
+}
+.reel-cell .big{
+  font-family:'Bungee',cursive;
+  font-size:clamp(1.5rem,5vw,2.4rem);
+  line-height:1;
+  background:linear-gradient(180deg,#ff2bd6,#7b2bff);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.reel-cell .small{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  margin-top:6px;color:#5b4a86;font-weight:700;
+}
+.reel-cell .emoji{font-size:3rem;line-height:1}
+.spin-btn{
+  margin-top:18px;
+  font-family:'Bungee',cursive;
+  font-size:1.05rem;
+  background:linear-gradient(180deg,var(--gold),var(--gold-deep));
+  color:#1a0e00;
+  border:3px solid #1a0e00;
+  border-radius:50px;
+  padding:14px 44px;
+  cursor:pointer;
+  box-shadow:0 6px 0 #1a0e00,0 0 30px rgba(255,210,74,.5);
+  transition:transform .1s, box-shadow .1s;
+  letter-spacing:.08em;
+}
+.spin-btn:hover{transform:translateY(2px);box-shadow:0 4px 0 #1a0e00,0 0 40px rgba(255,210,74,.8)}
+.spin-btn:active{transform:translateY(6px);box-shadow:0 0 0 #1a0e00}
+.spin-btn:focus-visible{outline:3px dashed var(--neon-cyan);outline-offset:4px}
+.jackpot-msg{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--neon-cyan);font-size:.8rem;letter-spacing:.18em;
+  margin-top:14px;min-height:1.2em;text-transform:uppercase;
+  text-shadow:0 0 10px var(--neon-cyan);
+}
+/* ---------- SECTIONS ---------- */
+section{padding:90px 20px;max-width:1080px;margin:0 auto}
+.sec-title{
+  font-family:'Bungee',cursive;
+  font-size:clamp(1.6rem,5vw,2.8rem);
+  text-align:center;
+  margin-bottom:8px;
+}
+.sec-title.cyan{color:var(--neon-cyan);text-shadow:0 0 12px var(--neon-cyan),0 0 50px rgba(0,240,255,.5)}
+.sec-title.pink{color:var(--neon-pink);text-shadow:0 0 12px var(--neon-pink),0 0 50px rgba(255,43,214,.5)}
+.sec-title.gold{color:var(--gold);text-shadow:0 0 12px var(--gold),0 0 50px rgba(255,210,74,.5)}
+.sec-kicker{
+  text-align:center;font-family:'JetBrains Mono',monospace;
+  color:var(--dim);letter-spacing:.3em;font-size:.72rem;text-transform:uppercase;
+  margin-bottom:52px;
+}
+
+/* ---------- EXPERIENCE CARDS ---------- */
+.xp-card{
+  background:linear-gradient(135deg,rgba(255,43,214,.08),rgba(0,240,255,.05));
+  border:1px solid rgba(255,43,214,.35);
+  border-radius:18px;
+  padding:34px 34px 28px;
+  margin-bottom:34px;
+  position:relative;
+  overflow:hidden;
+  transition:transform .25s, box-shadow .25s;
+}
+.xp-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.06) 50%,transparent 70%);
+  transform:translateX(-100%);
+  transition:transform .8s;
+}
+.xp-card:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:0 24px 60px rgba(255,43,214,.25)}
+.xp-card:hover::before{transform:translateX(100%)}
+.xp-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.xp-role{font-family:'Bungee',cursive;font-size:clamp(1rem,3vw,1.35rem);color:var(--white)}
+.xp-date{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--neon-cyan);letter-spacing:.1em;border:1px solid rgba(0,240,255,.4);padding:4px 12px;border-radius:30px}
+.xp-org{color:var(--gold);font-weight:700;margin-bottom:18px;letter-spacing:.04em}
+.xp-card ul{list-style:none}
+.xp-card li{
+  padding-left:30px;position:relative;margin-bottom:12px;color:#cdc2e6;line-height:1.6;font-size:.96rem;
+}
+.xp-card li::before{
+  content:'♦';position:absolute;left:4px;color:var(--neon-pink);
+  text-shadow:0 0 8px var(--neon-pink);
+}
+.xp-card li b{color:var(--white)}
+.payline{
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  background:rgba(255,210,74,.12);border:1px solid rgba(255,210,74,.5);color:var(--gold);
+  border-radius:30px;padding:3px 12px;margin:14px 8px 0 0;letter-spacing:.08em;
+}
+
+/* ---------- CHIPS (SKILLS) ---------- */
+.chip-table{
+  background:radial-gradient(ellipse at center,#103820,#06140b 75%);
+  border:6px solid #3a2410;
+  border-radius:40px;
+  padding:46px 30px;
+  box-shadow:inset 0 0 80px rgba(0,0,0,.7),0 20px 60px rgba(0,0,0,.6);
+}
+.chip-group{margin-bottom:34px}
+.chip-group:last-child{margin-bottom:0}
+.chip-label{
+  font-family:'JetBrains Mono',monospace;color:var(--gold);letter-spacing:.25em;
+  text-transform:uppercase;font-size:.72rem;margin-bottom:16px;text-align:center;
+}
+.chips{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.chip{
+  --c:var(--neon-pink);
+  position:relative;z-index:0;
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.85rem;
+  color:var(--white);
+  background:repeating-conic-gradient(var(--c) 0 18deg, #14091f 18deg 36deg);
+  border-radius:50px;
+  padding:14px 24px;
+  border:2px solid var(--c);
+  box-shadow:0 6px 14px rgba(0,0,0,.6),0 0 18px color-mix(in srgb,var(--c) 40%,transparent);
+  transition:transform .18s;
+  cursor:default;
+}
+/* solid face — stripes only show as edge spots on the rim */
+.chip::before{
+  content:'';position:absolute;inset:5px;z-index:-1;
+  border-radius:50px;
+  background:linear-gradient(180deg,#241338,#150a26);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.chip:hover{transform:translateY(-6px) rotate(6deg) scale(1.06)}
+.chip.cy{--c:var(--neon-cyan)}
+.chip.gd{--c:var(--gold)}
+.chip.rd{--c:var(--hot-red)}
+
+/* ---------- PROJECT CABINETS ---------- */
+.cabinets{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:30px}
+.cabinet{
+  background:linear-gradient(180deg,#22103d,#0e0620);
+  border:3px solid var(--neon-cyan);
+  border-radius:18px 18px 8px 8px;
+  overflow:hidden;
+  box-shadow:0 0 24px rgba(0,240,255,.2),0 18px 40px rgba(0,0,0,.6);
+  transition:transform .25s, box-shadow .25s;
+  display:flex;flex-direction:column;
+}
+.cabinet:hover{transform:translateY(-10px);box-shadow:0 0 40px rgba(0,240,255,.45),0 30px 60px rgba(0,0,0,.7)}
+.cab-screen{
+  background:linear-gradient(135deg,#ff2bd6 0%,#7b2bff 55%,#00f0ff 130%);
+  padding:26px 20px;text-align:center;
+  border-bottom:3px solid var(--neon-cyan);
+}
+.cab-screen .icon{font-size:3rem;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+.cab-screen h3{font-family:'Bungee',cursive;font-size:1.02rem;color:#fff;margin-top:12px;text-shadow:2px 2px 0 rgba(0,0,0,.4)}
+.cab-body{padding:22px;color:#cdc2e6;font-size:.92rem;line-height:1.65;flex:1}
+.cab-foot{
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);padding:0 22px 20px;
+}
+
+/* ---------- EDUCATION / PAYTABLE ---------- */
+.paytable{
+  border:2px dashed var(--gold);
+  border-radius:18px;
+  padding:38px 30px;
+  text-align:center;
+  background:rgba(255,210,74,.05);
+}
+.paytable h3{font-family:'Bungee',cursive;color:var(--gold);font-size:1.2rem;margin-bottom:10px}
+.paytable p{color:#cdc2e6;line-height:1.7}
+.cgpa{
+  font-family:'Monoton',cursive;font-size:clamp(2.4rem,8vw,4.5rem);color:var(--neon-cyan);
+  text-shadow:0 0 10px var(--neon-cyan),0 0 50px rgba(0,240,255,.5);
+  margin:14px 0 4px;
+}
+.cgpa-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase}
+
+/* ---------- CONTACT ---------- */
+.cashout{
+  text-align:center;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(255,43,214,.18),transparent 65%);
+  border-radius:30px;
+  padding:70px 20px;
+}
+.cashout .neon-name{font-size:clamp(1.6rem,5.5vw,3.4rem)}
+.contact-row{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:34px}
+.contact-btn{
+  font-family:'Bungee',cursive;font-size:.85rem;
+  text-decoration:none;color:#1a0e00;
+  background:linear-gradient(180deg,var(--gold),var(--gold-deep));
+  border:3px solid #1a0e00;border-radius:50px;
+  padding:14px 28px;
+  box-shadow:0 5px 0 #1a0e00,0 0 26px rgba(255,210,74,.4);
+  transition:transform .1s, box-shadow .1s;
+}
+.contact-btn:hover{transform:translateY(2px);box-shadow:0 3px 0 #1a0e00,0 0 36px rgba(255,210,74,.7)}
+.contact-btn.alt{background:linear-gradient(180deg,var(--neon-cyan),#0090a0);box-shadow:0 5px 0 #1a0e00,0 0 26px rgba(0,240,255,.4)}
+.contact-btn:focus-visible{outline:3px dashed var(--neon-pink);outline-offset:4px}
+footer{
+  text-align:center;font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--dim);letter-spacing:.2em;padding:30px 20px 46px;text-transform:uppercase;
+}
+
+/* ---------- CONFETTI ---------- */
+.coin{
+  position:fixed;top:-40px;font-size:1.6rem;z-index:200;pointer-events:none;
+  animation:fall linear forwards;
+}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.2}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .ticker-inner{animation:none}
+}
+@media(max-width:560px){
+  .reels{padding:18px 12px 6px}
+  .reel{height:96px}
+  .reel-cell{height:96px;flex-basis:96px}
+  .reel-cell .emoji{font-size:2.1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>★ G2E 2024 LAS VEGAS EXHIBITOR ★</span><span>+12% Q3 REVENUE</span><span>4 CLASS 2 (HHR) GAMES SHIPPED</span><span>60% FASTER TEAM WORKFLOW</span><span>UNITY • C# • .NET</span><span>STABLE 60 FPS, ALWAYS</span><span>★ G2E 2024 LAS VEGAS EXHIBITOR ★</span><span>+12% Q3 REVENUE</span><span>4 CLASS 2 (HHR) GAMES SHIPPED</span><span>60% FASTER TEAM WORKFLOW</span><span>UNITY • C# • .NET</span><span>STABLE 60 FPS, ALWAYS</span>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <p class="hero-eyebrow">Now appearing on the casino floor</p>
+  <h1 class="neon-name">PRATHEEK&nbsp;&nbsp;N</h1>
+  <p class="hero-sub">GAME DEVELOPER ★ UNITY ★ C# ★ .NET</p>
+  <p class="hero-tag">2+ years building <b>revenue-generating slot games</b> at Light &amp; Wonder — full client-server stack, from state machines to the showroom floor at <b>G2E Las Vegas</b>.</p>
+
+  <div class="slot" role="region" aria-label="Interactive stat slot machine">
+    <div class="bulbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="slot-header">★ THE RESUME JACKPOT ★</div>
+    <div class="reels">
+      <div class="reel"><div class="reel-strip" id="r1"></div></div>
+      <div class="reel"><div class="reel-strip" id="r2"></div></div>
+      <div class="reel"><div class="reel-strip" id="r3"></div></div>
+    </div>
+    <button class="spin-btn" id="spin">SPIN MY STATS</button>
+    <p class="jackpot-msg" id="msg">Pull the handle. House always delivers.</p>
+  </div>
+</header>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <h2 class="sec-title pink">THE GAME FLOOR</h2>
+  <p class="sec-kicker">// professional experience</p>
+
+  <article class="xp-card">
+    <div class="xp-top">
+      <h3 class="xp-role">ASSOCIATE SOFTWARE ENGINEER — GAME DEV</h3>
+      <span class="xp-date">AUG 2023 → JAN 2025</span>
+    </div>
+    <p class="xp-org">LIGHT &amp; WONDER · BENGALURU</p>
+    <ul>
+      <li>Delivered <b>four complete Unity games</b> with full client-server integration — front-end, state-machine game logic, and .NET backend communication.</li>
+      <li>Showcased <b>two gambling games at G2E 2024 Las Vegas</b>, contributing to a <b>12% revenue increase in Q3 2024</b>.</li>
+      <li>Designed a custom <b>C# XAML dev tool</b> that accelerated team workflow by <b>60%</b>.</li>
+      <li>Optimized performance with <b>sprite atlasing, object pooling, async coroutines</b> — faster loads, rock-stable frame rates.</li>
+    </ul>
+    <span class="payline">PAYLINE: SHIPPED ×4</span><span class="payline">BONUS: VEGAS SHOWCASE</span><span class="payline">MULTIPLIER: 1.6× WORKFLOW</span>
+  </article>
+
+  <article class="xp-card">
+    <div class="xp-top">
+      <h3 class="xp-role">GAME DEVELOPER INTERN</h3>
+      <span class="xp-date">FEB 2023 → JUL 2023</span>
+    </div>
+    <p class="xp-org">LIGHT &amp; WONDER · BENGALURU</p>
+    <ul>
+      <li>Completed a 6-month deep-dive into <b>Unity, C#, 2D/3D, OOP, and physics systems</b>.</li>
+      <li><b>Led the intern team</b> to a production-ready <b>Roulette game</b> built with Unity, C#, and Blender.</li>
+      <li>Built prototypes — Infinite Runner, First-Person Explorer, 2D/3D mini-games — with spawning, power-ups, scene management, and UI systems.</li>
+    </ul>
+    <span class="payline">FREE SPINS: 6-MONTH TRAINING</span><span class="payline">WILD: TEAM LEAD</span>
+  </article>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <h2 class="sec-title gold">PLACE YOUR BETS</h2>
+  <p class="sec-kicker">// the skill table — every chip is loaded</p>
+  <div class="chip-table">
+    <div class="chip-group">
+      <p class="chip-label">♠ Game Development</p>
+      <div class="chips">
+        <span class="chip">Unity Engine</span><span class="chip cy">C#</span><span class="chip gd">.NET</span><span class="chip rd">2D/3D Development</span><span class="chip">State Machines</span><span class="chip cy">Object Pooling</span><span class="chip gd">Physics</span><span class="chip rd">UI Management</span><span class="chip">Data Persistence</span>
+      </div>
+    </div>
+    <div class="chip-group">
+      <p class="chip-label">♥ Languages &amp; Tools</p>
+      <div class="chips">
+        <span class="chip cy">Python</span><span class="chip">JavaScript</span><span class="chip gd">Unity Editor</span><span class="chip rd">Visual Studio</span><span class="chip cy">Git</span><span class="chip">Perforce</span><span class="chip gd">Jira</span><span class="chip rd">Blender</span>
+      </div>
+    </div>
+    <div class="chip-group">
+      <p class="chip-label">♦ Core Competencies</p>
+      <div class="chips">
+        <span class="chip gd">Full-Stack Dev</span><span class="chip">Client-Server Architecture</span><span class="chip cy">Performance Optimization</span><span class="chip rd">Unit Testing</span><span class="chip">Technical Leadership</span><span class="chip gd">Project Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects">
+  <h2 class="sec-title cyan">HIGH ROLLER PROJECTS</h2>
+  <p class="sec-kicker">// pick a cabinet, any cabinet</p>
+  <div class="cabinets">
+    <div class="cabinet">
+      <div class="cab-screen"><span class="icon">🎰</span><h3>CLASS 2 (HHR) GAMES</h3></div>
+      <div class="cab-body">Four fully delivered Class 2 historical-horse-racing games — end-to-end development plus complete unit testing on each title.</div>
+      <div class="cab-foot">▶ 4 titles shipped · production</div>
+    </div>
+    <div class="cabinet">
+      <div class="cab-screen"><span class="icon">🃏</span><h3>G2E TRADE SHOW GAMES</h3></div>
+      <div class="cab-body">Two complete gambling games built for the industry's biggest stage — full development cycle from concept to deployment on the Vegas show floor.</div>
+      <div class="cab-foot">▶ G2E 2024 · Las Vegas</div>
+    </div>
+    <div class="cabinet">
+      <div class="cab-screen"><span class="icon">🎡</span><h3>ROULETTE GAME CLONE</h3></div>
+      <div class="cab-body">Led the team build: realistic wheel physics, full betting systems, and 3D modeling pipeline with Blender integration.</div>
+      <div class="cab-foot">▶ team lead · unity + blender</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <h2 class="sec-title gold">THE PAYTABLE</h2>
+  <p class="sec-kicker">// education</p>
+  <div class="paytable">
+    <h3>B.E. COMPUTER SCIENCE — 2019–2023</h3>
+    <p>Vidyavardhaka College of Engineering</p>
+    <div class="cgpa">8.71</div>
+    <p class="cgpa-label">CGPA / 10.0 — house odds beaten</p>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="cashout">
+    <h2 class="neon-name">CASH OUT</h2>
+    <div class="contact-row">
+      <a class="contact-btn" href="mailto:pratheekn2001@gmail.com">✉ EMAIL ME</a>
+      <a class="contact-btn alt" href="tel:+918217415973">☎ +91 82174 15973</a>
+      <a class="contact-btn" href="https://linkedin.com/in/pratheek-n-b2b601290" target="_blank" rel="noopener">★ LINKEDIN</a>
+    </div>
+    <p class="jackpot-msg" style="margin-top:26px">📍 MYSURU, INDIA — AVAILABLE FOR THE NEXT BIG GAME</p>
+  </div>
+</section>
+
+<footer>PRATHEEK N © 2026 · BUILT LIKE A SLOT MACHINE: POLISHED, FAST, AND IT ALWAYS PAYS OUT</footer>
+
+<script>
+// ----- Slot machine -----
+const symbols = [
+  {emoji:'🍒'},{emoji:'🔔'},{emoji:'💎'},{emoji:'7️⃣'},{emoji:'🍋'},{emoji:'⭐'}
+];
+const finals = [
+  {big:'2+ YRS', small:'Game Dev XP'},
+  {big:'4 GAMES', small:'Shipped to Prod'},
+  {big:'+12%', small:'Q3 Revenue'}
+];
+const altFinals = [
+  [{big:'60%', small:'Faster Workflow'},{big:'G2E', small:'Vegas 2024'},{big:'8.71', small:'CGPA'}],
+  [{big:'C#', small:'Primary Weapon'},{big:'UNITY', small:'Engine of Choice'},{big:'.NET', small:'Server Side'}],
+  [{big:'2+ YRS', small:'Game Dev XP'},{big:'4 GAMES', small:'Shipped to Prod'},{big:'+12%', small:'Q3 Revenue'}]
+];
+const msgs = ['JACKPOT! THOSE ARE REAL NUMBERS.','TRIPLE MATCH — HIRE IMMEDIATELY.','WINNER WINNER. CHECK THE PAYLINE.'];
+let spinCount = 0;
+const CELL = () => (window.innerWidth <= 560 ? 96 : 130);
+
+function buildStrip(el, final){
+  el.innerHTML = '';
+  for(let i=0;i<10;i++){
+    const s = symbols[Math.floor(Math.random()*symbols.length)];
+    el.insertAdjacentHTML('beforeend', `<div class="reel-cell"><span class="emoji">${s.emoji}</span></div>`);
+  }
+  el.insertAdjacentHTML('beforeend', `<div class="reel-cell"><span class="big">${final.big}</span><span class="small">${final.small}</span></div>`);
+}
+
+const strips = [document.getElementById('r1'),document.getElementById('r2'),document.getElementById('r3')];
+const msg = document.getElementById('msg');
+const spinBtn = document.getElementById('spin');
+
+// initial state
+strips.forEach((s,i)=>{ buildStrip(s, finals[i]); s.style.transition='none'; s.style.transform=`translateY(-${10*CELL()}px)`; });
+
+function spin(){
+  spinBtn.disabled = true;
+  msg.textContent = 'SPINNING…';
+  const set = altFinals[spinCount % altFinals.length];
+  spinCount++;
+  strips.forEach((s,i)=>{
+    buildStrip(s, set[i]);
+    s.style.transition = 'none';
+    s.style.transform = 'translateY(0)';
+    // force reflow then animate
+    void s.offsetHeight;
+    s.style.transition = `transform ${1.6 + i*0.45}s cubic-bezier(.15,.9,.3,1.04)`;
+    s.style.transform = `translateY(-${10*CELL()}px)`;
+  });
+  setTimeout(()=>{
+    msg.textContent = msgs[Math.floor(Math.random()*msgs.length)];
+    rainCoins();
+    spinBtn.disabled = false;
+  }, 2700);
+}
+spinBtn.addEventListener('click', spin);
+
+// ----- Coin rain -----
+function rainCoins(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const icons = ['🪙','💰','✨','💎'];
+  for(let i=0;i<26;i++){
+    const c = document.createElement('div');
+    c.className = 'coin';
+    c.textContent = icons[Math.floor(Math.random()*icons.length)];
+    c.style.left = Math.random()*100 + 'vw';
+    c.style.animationDuration = (2 + Math.random()*2.5) + 's';
+    c.style.fontSize = (1 + Math.random()*1.4) + 'rem';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(), 5000);
+  }
+}
+</script>
+</body>
+</html>
