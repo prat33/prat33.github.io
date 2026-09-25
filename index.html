@@ -251,6 +251,28 @@ section{padding:90px 20px;max-width:1080px;margin:0 auto}
   border-radius:30px;padding:3px 12px;margin:14px 8px 0 0;letter-spacing:.08em;
 }
 
+/* ---------- MULTI-AREA EXPERIENCE CARD ---------- */
+.zv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:18px;margin-top:4px}
+.zv-block{
+  background:rgba(10,6,18,.45);border:1px solid rgba(0,240,255,.25);border-radius:14px;
+  padding:22px 22px 18px;display:flex;flex-direction:column;
+}
+.zv-block:nth-child(even){border-color:rgba(255,210,74,.3)}
+.zv-block ul{flex:1}
+.zv-title{font-family:'Bungee',cursive;font-size:clamp(.95rem,2.6vw,1.1rem);color:var(--white);line-height:1.2}
+.bonus-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.bonus-icon{font-size:2rem;line-height:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+.bonus-stat{margin-left:auto;text-align:right;flex:0 0 auto}
+.bonus-stat b{
+  display:block;font-family:'Monoton',cursive;font-size:clamp(1.7rem,4.5vw,2.3rem);line-height:1;
+  color:var(--neon-cyan);text-shadow:0 0 10px var(--neon-cyan),0 0 40px rgba(0,240,255,.5);
+}
+.zv-block:nth-child(even) .bonus-stat b{color:var(--gold);text-shadow:0 0 10px var(--gold),0 0 40px rgba(255,210,74,.5)}
+.bonus-stat small{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
+.bonus-sub{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;margin-bottom:16px}
+.zv-card:hover{transform:translateY(-4px)}
+@media(max-width:560px){.xp-card{padding:26px 18px 22px}.zv-block{padding:18px 16px 14px}}
+
 /* ---------- CHIPS (SKILLS) ---------- */
 .chip-table{
   background:radial-gradient(ellipse at center,#103820,#06140b 75%);
@@ -383,7 +405,7 @@ footer{
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner">
-    <span>★ G2E 2024 LAS VEGAS EXHIBITOR ★</span><span>+12% Q3 REVENUE</span><span>4 CLASS 2 (HHR) GAMES SHIPPED</span><span>60% FASTER TEAM WORKFLOW</span><span>UNITY • C# • .NET</span><span>STABLE 60 FPS, ALWAYS</span><span>★ G2E 2024 LAS VEGAS EXHIBITOR ★</span><span>+12% Q3 REVENUE</span><span>4 CLASS 2 (HHR) GAMES SHIPPED</span><span>60% FASTER TEAM WORKFLOW</span><span>UNITY • C# • .NET</span><span>STABLE 60 FPS, ALWAYS</span>
+    <span>★ G2E 2024 LAS VEGAS EXHIBITOR ★</span><span>+12% Q3 REVENUE</span><span>4 CLASS 2 (HHR) GAMES SHIPPED</span><span>60% FASTER TEAM WORKFLOW</span><span>UNITY • C# • .NET</span><span>STABLE 60 FPS, ALWAYS</span><span>5 GAMES DELIVERED END-TO-END</span><span>20+ BONUS FEATURES RECOVERY-SAFE</span><span>+15–20 FPS ACROSS ALL GAMES</span><span>15 MIN → 30 SEC TOOLING</span><span>★ G2E 2024 LAS VEGAS EXHIBITOR ★</span><span>+12% Q3 REVENUE</span><span>4 CLASS 2 (HHR) GAMES SHIPPED</span><span>60% FASTER TEAM WORKFLOW</span><span>UNITY • C# • .NET</span><span>STABLE 60 FPS, ALWAYS</span><span>5 GAMES DELIVERED END-TO-END</span><span>20+ BONUS FEATURES RECOVERY-SAFE</span><span>+15–20 FPS ACROSS ALL GAMES</span><span>15 MIN → 30 SEC TOOLING</span>
   </div>
 </div>
 
@@ -392,7 +414,7 @@ footer{
   <p class="hero-eyebrow">Now appearing on the casino floor</p>
   <h1 class="neon-name">PRATHEEK&nbsp;&nbsp;N</h1>
   <p class="hero-sub">GAME DEVELOPER ★ UNITY ★ C# ★ .NET</p>
-  <p class="hero-tag">2+ years building <b>revenue-generating slot games</b> at Light &amp; Wonder — full client-server stack, from state machines to the showroom floor at <b>G2E Las Vegas</b>.</p>
+  <p class="hero-tag">2.5+ years building <b>revenue-generating slot games</b> at Light &amp; Wonder and <b>ZVKY Design</b> — full client-server stack, from state machines to the showroom floor at <b>G2E Las Vegas</b>.</p>
 
   <div class="slot" role="region" aria-label="Interactive stat slot machine">
     <div class="bulbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -411,6 +433,70 @@ footer{
 <section id="experience">
   <h2 class="sec-title pink">THE GAME FLOOR</h2>
   <p class="sec-kicker">// professional experience</p>
+
+  <article class="xp-card zv-card">
+    <div class="xp-top">
+      <h3 class="xp-role">GAME DEVELOPER</h3>
+      <span class="xp-date">DEC 2025 → PRESENT</span>
+    </div>
+    <p class="xp-org">ZVKY DESIGN · BENGALURU</p>
+    <div class="zv-grid">
+      <div class="zv-block"><div class="bonus-head">
+        <span class="bonus-icon" aria-hidden="true">🎯</span>
+        <h4 class="zv-title">DELIVERY</h4>
+        <span class="bonus-stat"><b>5</b><small>games end-to-end</small></span>
+      </div>
+      <p class="bonus-sub">Ship it · on time · every time</p>
+      <ul>
+        <li>Delivered <b>5 games end-to-end</b> while running <b>2 projects in parallel</b> throughout.</li>
+        <li><b>Took over a title solo</b> when the team was short-staffed and saw it through to delivery.</li>
+        <li>Built a <b>new Brazil-market lobby</b> for <b>portrait + dual-screen</b> cabinets as a priority request.</li>
+        <li><b>Every deliverable landed before deadline.</b></li>
+      </ul>
+      <div><span class="payline">PAYLINE: 5 SHIPPED</span><span class="payline">WILD: SOLO TAKEOVER</span></div>
+      </div>
+      <div class="zv-block"><div class="bonus-head">
+        <span class="bonus-icon" aria-hidden="true">🔁</span>
+        <h4 class="zv-title">BONUS RECOVERY</h4>
+        <span class="bonus-stat"><b>20+</b><small>bonus features</small></span>
+      </div>
+      <p class="bonus-sub">Restore game state after power loss or relaunch</p>
+      <ul>
+        <li>Implemented recovery across <b>8 games</b> in <b>portrait + dual screen</b>, covering <b>20+ bonus features</b> plus base-game jackpots.</li>
+        <li>Fixed core defects: <b>double-credit on prize</b>, <b>stale snapshots replaying settled tickets</b>, recovery clearing, and snapshot storage.</li>
+        <li>Added <b>LocalSamples</b> testing for devs, removing the server dependency and cutting test loops from <b>hours to minutes</b>.</li>
+        <li><b>Reviewed and corrected 3 colleagues'</b> recovery implementations before they reached QA.</li>
+      </ul>
+      <div><span class="payline">MULTIPLIER: 8 GAMES</span><span class="payline">SCATTER: HOURS → MINUTES</span></div>
+      </div>
+      <div class="zv-block"><div class="bonus-head">
+        <span class="bonus-icon" aria-hidden="true">🛠️</span>
+        <h4 class="zv-title">FIELD ISSUES</h4>
+        <span class="bonus-stat"><b>4</b><small>high-priority fixes</small></span>
+      </div>
+      <p class="bonus-sub">Live cabinets · root cause · no guesswork</p>
+      <ul>
+        <li>Resolved <b>4 high-priority field issues</b>, including a <b>double base-game award</b>, a <b>wrong jackpot tier</b>, and a <b>cabinet black screen on relaunch</b>.</li>
+        <li>Root-caused an <b>autoplay failure in core scripts</b> affecting every game after a lobby round-trip, and handed the evidence to the client.</li>
+        <li>Found a <b>build-only cross-game prefab defect</b> (two games sharing one canvas), traced it to the commits, and decoupled both.</li>
+        <li>Fixed <b>Game Recall snapshots</b> across all dual-screen games.</li>
+      </ul>
+      <div><span class="payline">PAYLINE: ROOT CAUSE</span><span class="payline">BONUS: ALL DUAL-SCREEN</span></div>
+      </div>
+      <div class="zv-block"><div class="bonus-head">
+        <span class="bonus-icon" aria-hidden="true">⚡</span>
+        <h4 class="zv-title">PERFORMANCE &amp; TOOLING</h4>
+        <span class="bonus-stat"><b>+20</b><small>fps, all games</small></span>
+      </div>
+      <p class="bonus-sub">Faster games · faster team</p>
+      <ul>
+        <li>Raised frame rate by <b>15–20 FPS across all games</b> by cutting draw calls, improving code quality, and cleaning up projects.</li>
+        <li>Built a <b>math packaging tool</b> that turned a <b>15-minute manual task into under 30 seconds</b>, now used by the team.</li>
+      </ul>
+      <div><span class="payline">MULTIPLIER: 30× FASTER</span><span class="payline">WILD: TEAM-WIDE TOOL</span></div>
+      </div>
+    </div>
+  </article>
 
   <article class="xp-card">
     <div class="xp-top">
@@ -450,7 +536,7 @@ footer{
     <div class="chip-group">
       <p class="chip-label">♠ Game Development</p>
       <div class="chips">
-        <span class="chip">Unity Engine</span><span class="chip cy">C#</span><span class="chip gd">.NET</span><span class="chip rd">2D/3D Development</span><span class="chip">State Machines</span><span class="chip cy">Object Pooling</span><span class="chip gd">Physics</span><span class="chip rd">UI Management</span><span class="chip">Data Persistence</span>
+        <span class="chip">Unity Engine</span><span class="chip cy">C#</span><span class="chip gd">.NET</span><span class="chip rd">2D/3D Development</span><span class="chip">State Machines</span><span class="chip cy">Object Pooling</span><span class="chip gd">Physics</span><span class="chip rd">UI Management</span><span class="chip">Data Persistence</span><span class="chip cy">Power-Loss Recovery</span><span class="chip gd">Portrait &amp; Dual-Screen</span><span class="chip rd">Draw-Call Optimization</span>
       </div>
     </div>
     <div class="chip-group">
@@ -462,7 +548,7 @@ footer{
     <div class="chip-group">
       <p class="chip-label">♦ Core Competencies</p>
       <div class="chips">
-        <span class="chip gd">Full-Stack Dev</span><span class="chip">Client-Server Architecture</span><span class="chip cy">Performance Optimization</span><span class="chip rd">Unit Testing</span><span class="chip">Technical Leadership</span><span class="chip gd">Project Management</span>
+        <span class="chip gd">Full-Stack Dev</span><span class="chip">Client-Server Architecture</span><span class="chip cy">Performance Optimization</span><span class="chip rd">Unit Testing</span><span class="chip">Technical Leadership</span><span class="chip gd">Project Management</span><span class="chip rd">Root-Cause Debugging</span><span class="chip cy">Code Review</span><span class="chip">Dev Tooling &amp; Automation</span>
       </div>
     </div>
   </div>
@@ -524,26 +610,29 @@ const symbols = [
   {emoji:'🍒'},{emoji:'🔔'},{emoji:'💎'},{emoji:'7️⃣'},{emoji:'🍋'},{emoji:'⭐'}
 ];
 const finals = [
-  {big:'2+ YRS', small:'Game Dev XP'},
+  {big:'2.5+ YRS', small:'Game Dev XP'},
   {big:'4 GAMES', small:'Shipped to Prod'},
   {big:'+12%', small:'Q3 Revenue'}
 ];
 const altFinals = [
   [{big:'60%', small:'Faster Workflow'},{big:'G2E', small:'Vegas 2024'},{big:'8.71', small:'CGPA'}],
   [{big:'C#', small:'Primary Weapon'},{big:'UNITY', small:'Engine of Choice'},{big:'.NET', small:'Server Side'}],
-  [{big:'2+ YRS', small:'Game Dev XP'},{big:'4 GAMES', small:'Shipped to Prod'},{big:'+12%', small:'Q3 Revenue'}]
+  [{big:'5 GAMES', small:'Delivered E2E'},{big:'2×', small:'Parallel Projects'},{big:'0', small:'Missed Deadlines'}],
+  [{big:'20+', small:'Bonus Recoveries'},{big:'+20', small:'FPS All Games'},{big:'<30s', small:'Was 15 Min'}],
+  [{big:'2.5+ YRS', small:'Game Dev XP'},{big:'4 GAMES', small:'Shipped to Prod'},{big:'+12%', small:'Q3 Revenue'}]
 ];
 const msgs = ['JACKPOT! THOSE ARE REAL NUMBERS.','TRIPLE MATCH — HIRE IMMEDIATELY.','WINNER WINNER. CHECK THE PAYLINE.'];
 let spinCount = 0;
 const CELL = () => (window.innerWidth <= 560 ? 96 : 130);
 
+// Result sits at the TOP of the strip; the reel starts at the bottom and slides
+// down to it, so symbols fall from top to bottom like a real slot machine.
 function buildStrip(el, final){
-  el.innerHTML = '';
+  el.innerHTML = `<div class="reel-cell"><span class="big">${final.big}</span><span class="small">${final.small}</span></div>`;
   for(let i=0;i<10;i++){
     const s = symbols[Math.floor(Math.random()*symbols.length)];
     el.insertAdjacentHTML('beforeend', `<div class="reel-cell"><span class="emoji">${s.emoji}</span></div>`);
   }
-  el.insertAdjacentHTML('beforeend', `<div class="reel-cell"><span class="big">${final.big}</span><span class="small">${final.small}</span></div>`);
 }
 
 const strips = [document.getElementById('r1'),document.getElementById('r2'),document.getElementById('r3')];
@@ -551,7 +640,7 @@ const msg = document.getElementById('msg');
 const spinBtn = document.getElementById('spin');
 
 // initial state
-strips.forEach((s,i)=>{ buildStrip(s, finals[i]); s.style.transition='none'; s.style.transform=`translateY(-${10*CELL()}px)`; });
+strips.forEach((s,i)=>{ buildStrip(s, finals[i]); s.style.transition='none'; s.style.transform='translateY(0)'; });
 
 function spin(){
   spinBtn.disabled = true;
@@ -561,11 +650,11 @@ function spin(){
   strips.forEach((s,i)=>{
     buildStrip(s, set[i]);
     s.style.transition = 'none';
-    s.style.transform = 'translateY(0)';
-    // force reflow then animate
+    s.style.transform = `translateY(-${10*CELL()}px)`;
+    // force reflow then animate down to the result
     void s.offsetHeight;
     s.style.transition = `transform ${1.6 + i*0.45}s cubic-bezier(.15,.9,.3,1.04)`;
-    s.style.transform = `translateY(-${10*CELL()}px)`;
+    s.style.transform = 'translateY(0)';
   });
   setTimeout(()=>{
     msg.textContent = msgs[Math.floor(Math.random()*msgs.length)];
